@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Search: {{ search.query }}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="{% if search.found %}text-success{% else %}text-danger{% endif %}">{{ search.query }}</h2>
+      <span class="text-muted">{{ search.url }}</span>
+      <p>{{ search.result }}</p>
+    </div>
+  </div>
+</div>
+{% endblock content %}

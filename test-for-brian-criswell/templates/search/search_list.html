@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Search: {{ search.query }}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1><a href="{% url 'query' %}">Perform Search</a></h1>
+    </div>
+  </div>
+  {% for search in searches %}
+  <div class="row">
+    <div class="col-sm-12">
+      <span class="glyphicon {% if search.found %}text-success glyphicon-ok{% else %}text-danger glyphicon-remove{% endif %}"></span>
+      <a href="{% url 'detail' search.pk %}">{{ search.query }}</a>
+      <span class="text-muted">{{ search.url }}</span>
+      <p>{{ search.result }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}
